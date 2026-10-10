@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Victorine Younang, Ph.D. — AI Safety & Security Researcher</title>
+<meta name="description" content="Victorine Younang, Ph.D. — computer scientist working at the intersection of machine learning and security: AI safety, deception detection, model integrity, and verified AI.">
+<style>
+  :root{--ink:#15181d;--muted:#5b6472;--accent:#3b4cca;--accent2:#0a7d52;--line:#e7e9ee;--bg:#ffffff;--chip:#f3f4f8}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,"Segoe UI",Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);
+       margin:0;line-height:1.6;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  header{padding:56px 0 26px;border-bottom:1px solid var(--line)}
+  h1{font-size:34px;margin:0 0 6px;letter-spacing:.2px}
+  .tag{color:var(--accent);font-weight:600;font-size:16px;margin:0 0 14px}
+  .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .links a{display:inline-block;padding:6px 12px;border:1px solid var(--line);border-radius:20px;
+           text-decoration:none;color:var(--ink);font-size:14px;background:var(--chip)}
+  .links a:hover{border-color:var(--accent);color:var(--accent)}
+  nav{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+      border-bottom:1px solid var(--line);z-index:5}
+  nav .wrap{display:flex;gap:18px;flex-wrap:wrap;padding:12px 22px;font-size:14px}
+  nav a{color:var(--muted);text-decoration:none}
+  nav a:hover{color:var(--accent)}
+  section{padding:34px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin:0 0 16px}
+  h3{font-size:17px;margin:0 0 2px}
+  .lead{font-size:18px;color:var(--ink)}
+  .lead b{color:var(--accent)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff}
+  .card p{margin:6px 0 0;color:var(--muted);font-size:14.5px}
+  .meta{color:var(--accent2);font-weight:600;font-size:13px}
+  ul.pub{list-style:none;padding:0;margin:0}
+  ul.pub li{padding:10px 0;border-top:1px dashed var(--line)}
+  ul.pub li:first-child{border-top:none}
+  ul.pub .venue{color:var(--accent);font-weight:600}
+  .row{display:flex;justify-content:space-between;gap:14px;align-items:baseline;flex-wrap:wrap}
+  .row .when{color:var(--muted);font-size:13px;white-space:nowrap}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .chips span{background:var(--chip);border:1px solid var(--line);border-radius:14px;padding:3px 10px;font-size:13px;color:#39414e}
+  .skillrow{margin:10px 0}.skillrow b{color:var(--ink)}
+  footer{padding:30px 0 60px;color:var(--muted);font-size:14px}
+  a.inline{color:var(--accent);text-decoration:none}a.inline:hover{text-decoration:underline}
+  .hdr{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .hdr-text{flex:1;min-width:260px}
+  .avatar{width:118px;height:118px;flex:none}
+  .avatar img{width:118px;height:118px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+  .initials{display:none;width:118px;height:118px;border-radius:50%;color:#fff;font-size:44px;
+            font-weight:700;align-items:center;justify-content:center;letter-spacing:1px;
+            background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}h1{font-size:28px}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a>
+  <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
+  <a href="#certifications">Certs</a><a href="#contact">Contact</a>
+</div></nav>
+
+<header><div class="wrap hdr">
+  <div class="avatar">
+    <!-- To add your photo: drop a square image named photo.jpg next to index.html. -->
+    <img id="photo" src="photo.jpg" alt="Victorine Younang"
+         onerror="this.remove();document.getElementById('initials').style.display='flex'">
+    <div id="initials" class="initials">VY</div>
+  </div>
+  <div class="hdr-text">
+    <h1>Victorine Younang, Ph.D.</h1>
+    <p class="tag">Machine Learning Researcher &amp; Engineer — Ph.D., Computer Science</p>
+    <div class="links">
+      <a href="CV.pdf" target="_blank" style="background:var(--accent);color:#fff;border-color:var(--accent)">⬇ Download CV</a>
+      <a href="mailto:victorine.wakam@gmail.com">✉ victorine.wakam@gmail.com</a>
+      <a href="https://github.com/Victorine07" target="_blank">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=8LaXG4AAAAAJ" target="_blank">Google Scholar</a>
+    </div>
+  </div>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <h2>About</h2>
+  <p class="lead">I'm a computer scientist (Ph.D., 2026) working at the intersection of
+  <b>machine learning and security</b>. My research builds <b>provable, verifiable</b> guarantees
+  for AI-enabled systems, and I'm now focused on empirical <b>AI safety</b> — deception detection,
+  model integrity, and oversight by verification.</p>
+  <p style="color:var(--muted);margin-top:12px">My dissertation, <i>From Perceived Trust to Provable
+  Security</i>, is the throughline of my work: <b style="color:var(--accent2)">don't trust behavior —
+  verify it.</b></p>
+</div></section>
+
+<section id="research"><div class="wrap">
+  <h2>Research Interests</h2>
+  <div class="grid">
+    <div class="card"><h3>AI Safety &amp; Deception Detection</h3>
+      <p>Probing and interpretability for scheming/deception; scalable oversight; robust detection that survives persona &amp; formatting confounds.</p></div>
+    <div class="card"><h3>AI Security &amp; Model Integrity</h3>
+      <p>Reference-free detection of backdoors and sleeper-agent behavior; adversarial ML; red-teaming and evaluation of frontier models.</p></div>
+    <div class="card"><h3>Trustworthy &amp; Verified AI</h3>
+      <p>Formal verification (Isabelle/HOL), neuro-symbolic methods, and rigorous evaluation — turning "believed safe" into "provably safe".</p></div>
+    <div class="card"><h3>LLMs, RAG &amp; Graph ML</h3>
+      <p>LLM fine-tuning (LoRA/QLoRA, MoE), retrieval-augmented &amp; agentic systems, and graph neural networks over structured data.</p></div>
+  </div>
+</div></section>
+
+<section id="publications"><div class="wrap">
+  <h2>Selected Publications</h2>
+  <ul class="pub">
+    <li><b>Security Risk Assessment with Bayesian Attack Graphs and Complex Probabilities.</b>
+      <span class="venue">IEEE TDSC</span>, 2025.
+      Complex-probability risk modeling with destructive interference; validated on a connected-vehicle network.</li>
+    <li><b>Extending IoT Devices' Network Lifetime.</b> <span class="venue">IEEE TSC</span>, 2025.
+      VAR forecasting + QoS recommender; 95% accuracy, +20% network lifetime.</li>
+    <li><b>Comparative Analysis of Users' Concerns and Government Policies on Autonomous Vehicles.</b>
+      <span class="venue">Springer ICIOT / LNCS</span>, 2022.</li>
+    <li><b>CipherGuard: Reference-Free Detection of Backdoors in Cipher Implementations.</b>
+      <span class="venue">Under review, NDSS 2027</span>.
+      Data-oblivious invariant; 44 formally verified ciphers, zero false positives.</li>
+    <li><b>Tiered Isomorphic Alignment: Curriculum Fine-Tuning across Six LLMs.</b>
+      <span class="venue">Under review, AAAI 2027</span>.</li>
+    <li><b>CryptoGraph: Learning Security Properties of Block Ciphers with Graph ML.</b>
+      <span class="venue">In prep (resubmission), IEEE TIFS</span>. GAT+MLP; F1 0.94.</li>
+  </ul>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Selected Projects</h2>
+  <div class="grid">
+    <div class="card"><h3>RepoSage</h3>
+      <p>Agentic, <b>execution-verified</b> code-&amp;-docs RAG — generates, runs in a sandbox, and self-corrects against a library's own tests (LangGraph, self-hosted vLLM, Qdrant, DPO).</p></div>
+    <div class="card"><h3>CipherGuard</h3>
+      <p>Reference-free backdoor detection in cipher implementations via a data-oblivious invariant; AST + GNN(GAT) over an Isabelle/HOL-verified corpus; zero false positives.</p></div>
+    <div class="card"><h3>LLM Deception &amp; Honesty Probing</h3>
+      <p>Representation-engineering probes across the Qwen3 family (0.6B–32B); found the probe keyed on persona / chat-template tokens rather than content — a persona probe, not a deception probe.</p></div>
+    <div class="card"><h3>TIA — Curriculum Fine-Tuning</h3>
+      <p>Fine-tuned six open LLMs (incl. a DeepSeek-V2 MoE) on a single 16 GB GPU; custom correctness metrics beyond BLEU/CodeBLEU.</p></div>
+    <div class="card"><h3>Bayesian Attack Graphs</h3>
+      <p>Complex-valued attack graphs modeling concurrent, cyclic, multi-step breaches; CVSS-based; validated on connected &amp; autonomous vehicles.</p></div>
+    <div class="card"><h3>Rec Room Graph Recommender</h3>
+      <p>Productionized random-walk / Node2Vec embeddings over 1,000+ environments; +33% average session time on first deployment.</p></div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <div class="row"><h3>Oakland University — Graduate Research Assistant (ML / LLMs)</h3><span class="when">2020–2026 · Michigan</span></div>
+  <p style="color:var(--muted);margin:2px 0 16px">LLM fine-tuning &amp; evaluation, provable-security research, NSF "Generative AI for Secure Systems"; instructor of record (30+ students).</p>
+  <div class="row"><h3>Health Alliance Plan (HAP) — Applied Scientist / NLP (Intern)</h3><span class="when">Summer 2025 · Detroit, MI</span></div>
+  <p style="color:var(--muted);margin:2px 0 16px">Multimodal clinical NLP (BioBERT/ClinicalBERT NER) + claims data predicting 30-day ER readmissions; SHAP interpretability, bias audits, HIPAA/Snowflake.</p>
+  <div class="row"><h3>Rec Room — Applied ML Research Intern</h3><span class="when">Summer 2023 · Seattle</span></div>
+  <p style="color:var(--muted);margin:2px 0 16px">Productionized a graph-based recommender (+33% session time); refactored real-time inference (−10% latency).</p>
+  <div class="row"><h3>EDF — ML Scientist, Grid Forecasting (Intern)</h3><span class="when">Summer 2021 · Paris</span></div>
+  <p style="color:var(--muted);margin:2px 0 16px">ST-GNNs + probabilistic (quantile/Pinball) forecasting of grid load &amp; renewables; physics-informed loss; Dockerized PySpark pipelines.</p>
+  <div class="row"><h3>EDF — Big Data &amp; ML Consultant</h3><span class="when">2019–2020 · Paris</span></div>
+  <p style="color:var(--muted);margin:2px 0 16px">GDPR data-erasure on Hadoop (100% compliance); −30% downstream errors.</p>
+  <div class="row"><h3>Orange Telecom — Data Science / Network Security (Apprenticeship)</h3><span class="when">2017–2019 · Paris &amp; Brussels</span></div>
+  <p style="color:var(--muted);margin:2px 0 0">Anomaly/fraud detection on telecom telemetry; secure data pipelines (Kudu/Elasticsearch); R-Impala package &amp; BI.</p>
+</div></section>
+
+<section id="certifications"><div class="wrap">
+  <h2>Certifications</h2>
+  <div class="chips">
+    <span>AWS Certified AI Practitioner (AIF-C01) — exp. Nov 2026</span>
+    <span>NVIDIA-Certified Associate: GenAI &amp; LLMs (NCA-GENL) — exp. Dec 2026</span>
+    <span>OWASP Top 10 for LLM Applications</span>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Skills</h2>
+  <div class="skillrow"><b>LLMs &amp; GenAI:</b> fine-tuning (LoRA, QLoRA, PEFT), MoE, RAG, agentic systems (LangGraph), vLLM, custom evaluation</div>
+  <div class="skillrow"><b>ML &amp; Deep Learning:</b> PyTorch, Hugging Face, PyTorch Geometric, GNN/GAT, NLP, anomaly detection</div>
+  <div class="skillrow"><b>AI Safety &amp; Security:</b> deception probing, adversarial ML, backdoor detection, formal verification (Isabelle/HOL), threat modeling, OWASP LLM Top 10</div>
+  <div class="skillrow"><b>Systems &amp; Data:</b> Python, R, SQL/NoSQL, Docker, Kubernetes, Azure, quantization, distributed training</div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2>Education</h2>
+  <div class="row"><h3>Ph.D., Computer Science — Oakland University</h3><span class="when">2026</span></div>
+  <p style="color:var(--muted);margin:2px 0 14px"><i>From Perceived Trust to Provable Security: A Multi-Tiered Framework for the Design, Optimization, and Verification of Resource-Constrained IoT Ecosystems.</i></p>
+  <div class="row"><h3>M.Sc. Big Data &amp; B.Sc. Computer Engineering — ESIGELEC, France</h3><span class="when">2015–2019</span></div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Contact</h2>
+  <p>Reach me at <a class="inline" href="mailto:victorine.wakam@gmail.com">victorine.wakam@gmail.com</a>,
+  or on <a class="inline" href="https://github.com/Victorine07" target="_blank">GitHub</a> and
+  <a class="inline" href="https://scholar.google.com/citations?user=8LaXG4AAAAAJ" target="_blank">Google Scholar</a>.</p>
+</div></section>
+
+<footer><div class="wrap">© 2026 Victorine Younang · Built as a static page (no tracking).</div></footer>
+</body>
+</html>
