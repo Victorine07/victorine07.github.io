@@ -5,23 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Victorine Younang, Ph.D. — AI Security &amp; Safety Researcher</title>
-<meta name="description" content="Victorine Younang, Ph.D. — AI Security &amp; Safety Researcher.">
+<meta name="description" content="AI Security &amp; Safety Researcher, Ph.D. CS. LLM evaluation, adversarial robustness, backdoor detection, agentic AI security.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
   :root{--ink:#15181d;--muted:#5b6472;--accent:#3b4cca;--accent2:#0a7d52;--line:#e7e9ee;--bg:#ffffff;--chip:#f3f4f8}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:-apple-system,"Segoe UI",Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);
-       margin:0;line-height:1.6;font-size:16px}
+  body{font-family:-apple-system,"Segoe UI",Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);margin:0;line-height:1.6;font-size:16px}
   .wrap{max-width:860px;margin:0 auto;padding:0 22px}
   header{padding:56px 0 26px;border-bottom:1px solid var(--line)}
   h1{font-size:34px;margin:0 0 6px;letter-spacing:.2px}
   .tag{color:var(--accent);font-weight:600;font-size:16px;margin:0 0 14px}
   .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-  .links a{display:inline-block;padding:6px 12px;border:1px solid var(--line);border-radius:20px;
-           text-decoration:none;color:var(--ink);font-size:14px;background:var(--chip)}
+  .links a{display:inline-block;padding:6px 12px;border:1px solid var(--line);border-radius:20px;text-decoration:none;color:var(--ink);font-size:14px;background:var(--chip)}
   .links a:hover{border-color:var(--accent);color:var(--accent)}
-  nav{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
-      border-bottom:1px solid var(--line);z-index:5}
+  nav{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:5}
   nav .wrap{display:flex;gap:18px;flex-wrap:wrap;padding:12px 22px;font-size:14px}
   nav a{color:var(--muted);text-decoration:none}
   nav a:hover{color:var(--accent)}
@@ -29,17 +27,15 @@
   h2{font-size:14px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin:0 0 16px}
   h3{font-size:17px;margin:0 0 2px}
   .lead{font-size:18px;color:var(--ink)}
-  .lead b{color:var(--accent)}
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff}
   .card p{margin:6px 0 0;color:var(--muted);font-size:14.5px}
   ul.pub{list-style:none;padding:0;margin:0}
   ul.pub li{padding:10px 0;border-top:1px dashed var(--line)}
   ul.pub li:first-child{border-top:none}
-  ul.pub .venue{color:var(--accent);font-weight:600}
   .row{display:flex;justify-content:space-between;gap:14px;align-items:baseline;flex-wrap:wrap}
   .row .when{color:var(--muted);font-size:13px;white-space:nowrap}
-  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
   .chips span{background:var(--chip);border:1px solid var(--line);border-radius:14px;padding:3px 10px;font-size:13px;color:#39414e}
   .skillrow{margin:10px 0}.skillrow b{color:var(--ink)}
   footer{padding:30px 0 60px;color:var(--muted);font-size:14px}
@@ -48,9 +44,26 @@
   .hdr-text{flex:1;min-width:260px}
   .avatar{width:118px;height:118px;flex:none}
   .avatar img{width:118px;height:118px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
-  .initials{display:none;width:118px;height:118px;border-radius:50%;color:#fff;font-size:44px;
-            font-weight:700;align-items:center;justify-content:center;letter-spacing:1px;
-            background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  .initials{display:none;width:118px;height:118px;border-radius:50%;color:#fff;font-size:44px;font-weight:700;align-items:center;justify-content:center;letter-spacing:1px;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  #map{height:320px;border-radius:12px;border:1px solid var(--line);margin-top:16px;z-index:1}
+  .proj-card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff;margin-bottom:14px}
+  .proj-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .proj-title{font-size:17px;font-weight:600;margin:0 0 3px}
+  .proj-sub{color:var(--muted);font-size:14px;margin:0 0 6px}
+  .proj-links{font-size:13px;margin-top:4px}
+  .proj-links a{color:var(--accent);text-decoration:none}
+  .proj-links a:hover{text-decoration:underline}
+  .expand-btn{flex-shrink:0;background:var(--chip);border:1px solid var(--line);border-radius:20px;padding:5px 13px;font-size:13px;cursor:pointer;color:var(--muted);white-space:nowrap;margin-top:2px}
+  .expand-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .proj-details{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .proj-details.open{max-height:3000px}
+  .proj-details ul{margin:10px 0 2px;padding-left:20px;color:var(--muted);font-size:14.5px}
+  .proj-details ul li{margin:5px 0}
+  .proj-details ul li b{color:var(--ink)}
+  .cta-box{background:var(--chip);border-radius:12px;padding:24px 28px;margin-top:8px}
+  .cta-box p{color:var(--muted);margin:0 0 14px;font-size:16px}
+  .cta-btn{display:inline-block;padding:10px 22px;background:var(--accent);color:#fff;border-radius:22px;text-decoration:none;font-size:15px;font-weight:600}
+  .cta-btn:hover{opacity:.85}
   @media(max-width:620px){.grid{grid-template-columns:1fr}h1{font-size:28px}}
 </style>
 </head>
@@ -58,8 +71,8 @@
 
 <nav><div class="wrap">
   <a href="#about">About</a><a href="#focus">Focus</a><a href="#publications">Publications</a>
-  <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-  <a href="#certifications">Certs</a><a href="#contact">Contact</a>
+  <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#journey">Journey</a>
+  <a href="#skills">Skills</a><a href="#certifications">Certs</a><a href="#contact">Contact</a>
 </div></nav>
 
 <header><div class="wrap hdr">
@@ -70,11 +83,12 @@
   </div>
   <div class="hdr-text">
     <h1>Victorine Younang, Ph.D.</h1>
-    <p class="tag">AI Security &amp; Safety Researcher — Ph.D., Computer Science</p>
+    <p class="tag">AI Security &amp; Safety Researcher, Ph.D., Computer Science</p>
     <div class="links">
       <a href="CV.pdf" target="_blank" style="background:var(--accent);color:#fff;border-color:var(--accent)">⬇ Download CV</a>
       <a href="mailto:victorine.wakam@gmail.com">✉ victorine.wakam@gmail.com</a>
       <a href="https://github.com/Victorine07" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/victorine-younang/" target="_blank">LinkedIn</a>
       <a href="https://scholar.google.com/citations?user=8LaXG4AAAAAJ" target="_blank">Google Scholar</a>
     </div>
   </div>
@@ -87,41 +101,207 @@
 
 <section id="focus"><div class="wrap">
   <h2>Focus Areas</h2>
-  <div class="grid"><div class="card"><h3>AI Safety &amp; Security</h3><p>LLM evaluation &amp; safety/robustness metrics, red-teaming, adversarial ML, backdoor/sleeper-agent detection, deception probing, interpretability (SHAP/LIME), formal verification (Isabelle/HOL), threat modeling (CVSS), OWASP Top 10 for LLMs</p></div><div class="card"><h3>LLMs &amp; Alignment</h3><p>fine-tuning (LoRA/QLoRA, MoE), DPO/RLHF, RAG, agentic systems (LangGraph), vLLM; PyTorch, Hugging Face, GNN/GAT</p></div><div class="card"><h3>Security &amp; Privacy Infra</h3><p>HIPAA/PII-safe NLP, GDPR data sanitization, anomaly/fraud/DDoS detection, secure data architecture; Hadoop, Kudu, Elasticsearch, Snowflake</p></div><div class="card"><h3>Data &amp; Languages</h3><p>Python, SQL, R, PySpark; Docker, MLflow</p></div></div>
+  <div class="grid">
+    <div class="card"><h3>AI Safety &amp; Security</h3><p>LLM evaluation &amp; safety/robustness metrics, red-teaming, adversarial ML, backdoor/sleeper-agent detection, deception probing, interpretability (SHAP/LIME), formal verification (Isabelle/HOL), threat modeling (CVSS), OWASP Top 10 for LLMs</p></div>
+    <div class="card"><h3>LLMs &amp; Alignment</h3><p>fine-tuning (LoRA/QLoRA, MoE), DPO/RLHF, RAG, agentic systems (LangGraph), vLLM; PyTorch, Hugging Face, GNN/GAT</p></div>
+    <div class="card"><h3>Security &amp; Privacy Infra</h3><p>HIPAA/PII-safe NLP, GDPR data sanitization, anomaly/fraud/DDoS detection, secure data architecture; Hadoop, Kudu, Elasticsearch, Snowflake</p></div>
+    <div class="card"><h3>Data &amp; Languages</h3><p>Python, SQL, R, PySpark; Docker, MLflow</p></div>
+  </div>
 </div></section>
 
 <section id="publications"><div class="wrap">
   <h2>Selected Publications</h2>
-  <ul class="pub"><li>V. Younang et al. "Security Risk Assessment with Bayesian Attack Graphs and Complex Probabilities." <i>IEEE TDSC</i>, 2025.</li><li>V. Younang et al. "Extending IoT Devices' Network Lifetime." <i>IEEE TSC</i>, 2025.</li><li>V. Younang et al. "Comparative Analysis of Users' Concerns and Government Policies on Autonomous Vehicles." <i>Springer ICIOT / LNCS</i>, 2022.</li><li>V. Younang et al. "CipherGuard: Reference-Free Detection of Backdoors in Cipher Implementations." <i>Under review, NDSS 2027.</i></li><li>V. Younang et al. "Tiered Isomorphic Alignment: Curriculum Fine-Tuning across Six LLMs." <i>Under review, AAAI 2027.</i></li><li>V. Younang et al. "CryptoGraph: Learning Security Properties of Block Ciphers with Graph ML." <i>In prep (resubmission), IEEE TIFS.</i></li></ul>
+  <ul class="pub">
+    <li>V. Younang et al. "Security Risk Assessment with Bayesian Attack Graphs and Complex Probabilities." <i>IEEE TDSC</i>, 2025.</li>
+    <li>V. Younang et al. "Extending IoT Devices' Network Lifetime." <i>IEEE TSC</i>, 2025.</li>
+    <li>V. Younang et al. "Comparative Analysis of Users' Concerns and Government Policies on Autonomous Vehicles." <i>Springer ICIOT / LNCS</i>, 2022.</li>
+    <li>V. Younang et al. "CipherGuard: Reference-Free Detection of Backdoors in Cipher Implementations." <i>Under review, NDSS 2027.</i></li>
+    <li>V. Younang et al. "Tiered Isomorphic Alignment: Curriculum Fine-Tuning across Six LLMs." <i>Under review, AAAI 2027.</i></li>
+    <li>V. Younang et al. "CryptoGraph: Learning Security Properties of Block Ciphers with Graph ML." <i>In prep (resubmission), IEEE TIFS.</i></li>
+  </ul>
 </div></section>
 
 <section id="projects"><div class="wrap">
   <h2>Selected Projects</h2>
-  <div class="grid"><div class="card"><h3>RepoSage</h3><p>RepoSage — Agentic, execution-verified RAG (LangGraph, vLLM, Qdrant, DPO): dual-source code-&amp;-docs RAG that generates, executes in a sandbox, and self-corrects against a library's own tests; DPO alignment from execution-feedback preferences.</p></div><div class="card"><h3>CipherGuard</h3><p>CipherGuard — reference-free backdoor detection (GAT + AST, Isabelle/HOL-verified corpus): catches test-vector-compliant backdoors with zero false positives on 44 ciphers (NDSS 2027).</p></div><div class="card"><h3>LLM Deception &amp; Honesty Probing:</h3><p>LLM Deception &amp; Honesty Probing: representation-engineering probes across Qwen3 (0.6B–32B); found the probe keyed on persona/chat-template tokens rather than content, and proposed incentive-based training.</p></div></div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">CipherGuard — Reference-Free Backdoor Detection</p>
+        <p class="proj-sub">Reference-free backdoor detection system — Graph Attention Network classifier over AST structures on an Isabelle/HOL-verified corpus; zero false positives on 44 adversarial ciphers. Under review, NDSS 2027.</p>
+        <div class="chips"><span>GAT</span><span>AST</span><span>Isabelle/HOL</span><span>PyTorch Geometric</span></div>
+      </div>
+      <button class="expand-btn" onclick="toggleProj(this)">+ Details</button>
+    </div>
+    <div class="proj-details">
+      <ul>
+        <li>Reference-free backdoor detection pipeline: Abstract Syntax Tree (AST) analysis + Graph Attention Network (GAT) classifier trained on an Isabelle/HOL-formally-verified corpus of 44 cipher implementations.</li>
+        <li>Catches test-vector-compliant backdoors (branchless key leaks, hidden state injection) that pass all standard constant-time analyzers — zero false positives on 44 adversarial cipher variants.</li>
+        <li>Novel AI supply-chain threat vector documentation; addresses the OWASP Top 10 for LLMs model supply-chain risk category. Under review, NDSS 2027.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">LLM Deception &amp; Alignment Probing</p>
+        <p class="proj-sub">Representation-engineering probes across Qwen3 (0.6B–32B); found the probe keyed on persona/chat-template tokens rather than semantic content; proposed incentive-based post-training mitigation.</p>
+        <div class="chips"><span>Representation Engineering</span><span>Qwen3 0.6B–32B</span><span>PyTorch</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">RepoSage — Production Agentic RAG System</p>
+        <p class="proj-sub">Production LangGraph multi-agent RAG with OWASP Top 10 for LLMs controls embedded throughout, sandboxed code execution, MCP server, and LLM-as-judge safety evaluation — 93.33% Pass@1, live on HuggingFace Spaces.</p>
+        <div class="chips"><span>Python</span><span>LangGraph</span><span>Claude API</span><span>Qdrant</span><span>BM25</span><span>RRF</span><span>FastAPI</span><span>Docker</span><span>MCP</span><span>HuggingFace Spaces</span></div>
+        <div class="proj-links"><a href="https://github.com/Victorine07/Repo-Sage" target="_blank">GitHub</a> · <a href="https://huggingface.co/spaces/Victorine07/reposage" target="_blank">Live Demo</a></div>
+      </div>
+      <button class="expand-btn" onclick="toggleProj(this)">+ Details</button>
+    </div>
+    <div class="proj-details">
+      <ul>
+        <li><b>LLM integration:</b> integrated Claude (Anthropic) and Gemini APIs via LangChain for code generation; implemented sandboxed subprocess execution with stdout/stderr capture; self-correction loop feeds execution errors back into the LLM for targeted fixes.</li>
+        <li><b>Evaluation:</b> evaluated on a held-out 15-query gold set using an LLM-as-judge framework: 93.33% Pass@1, Context Recall 0.92, Faithfulness 0.88; OWASP Top 10 for LLMs security controls embedded throughout.</li>
+        <li><b>Agentic orchestration:</b> designed a stateful LangGraph StateGraph with conditional cycles — retrieve → generate → execute → self-correct — and bounded retry logic (max 2 retries on execution failure); the agent autonomously diagnoses and repairs broken code without human intervention.</li>
+        <li><b>Retrieval pipeline:</b> ingested the empyrical financial-metrics library at function level using AST-based chunking (122 functions); indexed dense embeddings (BAAI/bge-small-en-v1.5) in Qdrant and a parallel BM25 index; merged rankings via Reciprocal Rank Fusion (RRF) and reranked with a cross-encoder (ms-marco-MiniLM-L-6-v2).</li>
+        <li><b>MCP server:</b> built an MCPServer (mcp 2.x SDK) exposing three tools — search_empyrical (hybrid retrieval), execute_snippet (sandboxed execution), ask_reposage (full agent pipeline) — registered with Claude Desktop over stdio transport; verified end-to-end tool calls from live Claude Desktop conversations.</li>
+        <li><b>Production deployment:</b> REST API (FastAPI, POST /query + GET /health) with Pydantic validation; Dockerized with python:3.11-slim; public Gradio app deployed on HuggingFace Spaces (ZeroGPU, free tier).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">Clinical AI — Multimodal Learning &amp; Fairness Auditing (Self-Directed)</p>
+        <p class="proj-sub">Multimodal deep-learning system fusing BioBERT/ClinicalBERT with structured tabular features for 30-day readmission prediction; rigorous bias audits and fairness evaluations under HIPAA constraints.</p>
+        <div class="chips"><span>BioBERT</span><span>ClinicalBERT</span><span>PyTorch</span><span>SHAP</span><span>LIME</span><span>Snowflake (HIPAA)</span><span>Docker</span></div>
+      </div>
+      <button class="expand-btn" onclick="toggleProj(this)">+ Details</button>
+    </div>
+    <div class="proj-details">
+      <ul>
+        <li>Multimodal deep-learning system fusing BioBERT/ClinicalBERT text embeddings with structured tabular features for 30-day hospital readmission prediction on real EHR data; HIPAA-compliant Snowflake infrastructure.</li>
+        <li>Rigorous bias audits across demographic subsets (age, zip, intersectional cohorts): equalized odds, calibration analysis, disparate impact correction before deployment; formal audit reports for clinical directors.</li>
+        <li>SHAP and LIME interpretability translating deep classifier embeddings into transparent risk explanations; Dockerized microservice deployment under HIPAA constraints.</li>
+      </ul>
+    </div>
+  </div>
+
 </div></section>
 
 <section id="experience"><div class="wrap">
   <h2>Experience</h2>
-  <div class="row"><h3>Oakland University — AI Security &amp; Safety Researcher</h3><span class="when">Sep 2020 – Apr 2026 · Michigan, USA</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Adversarial Robustness &amp; Vulnerability Evaluation:</b> automated LLM evaluation harness assessing adversarial robustness and semantic consistency of six open frontier models (incl. DeepSeek-V2 MoE, Qwen2.5).</li><li><b>Custom Safety Guardrails:</b> execution-verified safety metrics (syntactic validity, semantic match, value consistency) catching failure modes, prompt-injection, and hallucination triggers missed by BLEU/CodeBLEU.</li><li><b>Neural Backdoor &amp; Supply-Chain Detection (CipherGuard):</b> reference-free static-analysis pipeline using Graph Attention Networks over AST graphs; detected branchless key-leak backdoors missed by constant-time analyzers (NDSS 2027 submission).</li><li><b>Model Alignment (RLHF/DPO) &amp; Policy:</b> curriculum fine-tuning stack with Direct Preference Optimization on constrained hardware; primary researcher on the NSF "Generative AI for Secure Systems" project.</li></ul><div class="row"><h3>Health Alliance Plan (HAP) — AI Safety &amp; Interpretability Researcher</h3><span class="when">Summer 2025 · Detroit, MI</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Trustworthy AI &amp; Algorithmic Fairness:</b> rigorous bias audits and fairness evaluations across demographic subsets (age, zip) so clinical models don't propagate systemic disparities.</li><li><b>Interpretability &amp; Transparency:</b> glass-box frameworks (SHAP, LIME) over deep classifiers → feature-level risk explanations for clinical care managers.</li><li><b>Secure &amp; Privacy-Preserving NLP:</b> HIPAA-compliant pipeline extracting sensitive unstructured text from Epic EHR; secure Snowflake warehouses for anonymized feature generation.</li><li><b>Semantic Robustness &amp; NER:</b> ClinicalBERT NER engineered to handle semantic negations and adversarial shorthand in medical prose.</li></ul><div class="row"><h3>Rec Room — Applied ML Researcher (Trust &amp; Safety)</h3><span class="when">Summer 2023 · Seattle, WA</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Structural Anomaly &amp; Abuse Detection:</b> structural representation model (random walk, Node2Vec) over 1,000+ environments, laying the foundation for detecting coordinated inauthentic behavior and adversarial user clustering.</li><li><b>High-Throughput Safety Inference:</b> refactored the real-time Python pipeline, −10% latency, so anomaly/safety-scoring models run within production latency budgets.</li><li><b>Product Guardrails:</b> deployed the graph engine to production (+33% session time) while maintaining platform integrity and safety guardrails.</li></ul><div class="row"><h3>EDF (Électricité de France) — R&amp;D ML Researcher (Risk &amp; Probabilistic Modeling)</h3><span class="when">Summer 2021 · Paris, France</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Tail-Risk &amp; Stress Analysis:</b> Monte Carlo simulations across extreme spatio-temporal scenarios → quantifiable uncertainty bounds for infrastructure failure.</li><li><b>Probabilistic Deep Learning:</b> quantile-loss sequence models replacing fragile point-estimates with robust 10th–90th percentile intervals for grid stability.</li><li><b>Physics-Guided Regularization:</b> ST-GNNs in PyTorch enforcing operational limits and Kirchhoff's laws via loss penalties.</li><li><b>Trustworthy AI:</b> SHAP feature-importance translating opaque GNN topology into transparent insights for human grid operators.</li></ul><div class="row"><h3>EDF (Électricité de France) — Data Privacy &amp; AI Security Engineer</h3><span class="when">2019–2020 · Paris, France</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Large-Scale Data Sanitization &amp; PII Protection:</b> secure data infrastructure on distributed Hadoop, executing GDPR data-erasure across millions of sensitive customer profiles to prevent PII leakage into downstream ML.</li><li><b>Automated Compliance:</b> compliance + validation pipelines mitigating privacy risks and reducing downstream processing errors by 30%.</li></ul><div class="row"><h3>Orange Telecom — Network Anomaly &amp; Data Security Researcher</h3><span class="when">2017–2019 · Paris, France &amp; Brussels, Belgium</span></div><ul style="margin:4px 0 0;color:var(--muted);font-size:14.5px"><li><b>Network Anomaly &amp; Fraud Detection:</b> unsupervised ML on streaming telemetry detecting anomalous traffic, DDoS signatures, and fraudulent behavior across high-volume distribution nodes.</li><li><b>Secure API &amp; Data Architecture:</b> specs + access-control for the GRAPA API facade enabling secure authenticated retrieval from the enterprise data lake (HUB DATA France).</li><li><b>Threat Telemetry Pipelines:</b> Python ingestion parsing XML network logs into Elasticsearch / Apache Kudu as a tamper-proof repository for real-time security auditing.</li><li><b>Data Governance:</b> internal R package interfacing Impala / Hadoop, standardizing secure data-access protocols across the data-science org.</li></ul>
+  <div class="row"><h3>Oakland University, AI Security &amp; Safety Researcher</h3><span class="when">Sep 2020 – Apr 2026 · Michigan, USA</span></div>
+  <ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px">
+    <li><b>Adversarial Robustness &amp; Vulnerability Evaluation:</b> automated LLM evaluation harness assessing adversarial robustness and semantic consistency of six open frontier models (incl. DeepSeek-V2 MoE, Qwen2.5).</li>
+    <li><b>Custom Safety Guardrails:</b> execution-verified safety metrics (syntactic validity, semantic match, value consistency) catching failure modes, prompt-injection, and hallucination triggers missed by BLEU/CodeBLEU.</li>
+    <li><b>Neural Backdoor &amp; Supply-Chain Detection (CipherGuard):</b> reference-free static-analysis pipeline using Graph Attention Networks over AST graphs; detected branchless key-leak backdoors missed by constant-time analyzers (NDSS 2027 submission).</li>
+    <li><b>Model Alignment (RLHF/DPO) &amp; Policy:</b> curriculum fine-tuning stack with Direct Preference Optimization on constrained hardware; primary researcher on the NSF "Generative AI for Secure Systems" project.</li>
+  </ul>
+  <div class="row"><h3>Rec Room, Applied ML Researcher (Trust &amp; Safety)</h3><span class="when">Summer 2023 · Seattle, WA</span></div>
+  <ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px">
+    <li><b>Structural Anomaly &amp; Abuse Detection:</b> structural representation model (random walk, Node2Vec) over 1,000+ environments, laying the foundation for detecting coordinated inauthentic behavior and adversarial user clustering.</li>
+    <li><b>High-Throughput Safety Inference:</b> refactored the real-time Python pipeline, −10% latency, so anomaly/safety-scoring models run within production latency budgets.</li>
+    <li><b>Product Guardrails:</b> deployed the graph engine to production (+33% session time) while maintaining platform integrity and safety guardrails.</li>
+  </ul>
+  <div class="row"><h3>EDF (Électricité de France), R&amp;D ML Researcher (Risk &amp; Probabilistic Modeling)</h3><span class="when">Summer 2021 · Paris, France</span></div>
+  <ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px">
+    <li><b>Tail-Risk &amp; Stress Analysis:</b> Monte Carlo simulations across extreme spatio-temporal scenarios → quantifiable uncertainty bounds for infrastructure failure.</li>
+    <li><b>Probabilistic Deep Learning:</b> quantile-loss sequence models replacing fragile point-estimates with robust 10th–90th percentile intervals for grid stability.</li>
+    <li><b>Physics-Guided Regularization:</b> ST-GNNs in PyTorch enforcing operational limits and Kirchhoff's laws via loss penalties.</li>
+    <li><b>Trustworthy AI:</b> SHAP feature-importance translating opaque GNN topology into transparent insights for human grid operators.</li>
+  </ul>
+  <div class="row"><h3>EDF (Électricité de France), Data Privacy &amp; AI Security Engineer</h3><span class="when">2019–2020 · Paris, France</span></div>
+  <ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px">
+    <li><b>Large-Scale Data Sanitization &amp; PII Protection:</b> secure data infrastructure on distributed Hadoop, executing GDPR data-erasure across millions of sensitive customer profiles to prevent PII leakage into downstream ML.</li>
+    <li><b>Automated Compliance:</b> compliance + validation pipelines mitigating privacy risks and reducing downstream processing errors by 30%.</li>
+  </ul>
+  <div class="row"><h3>Orange Telecom, Network Anomaly &amp; Data Security Researcher</h3><span class="when">2017–2019 · Paris, France &amp; Brussels, Belgium</span></div>
+  <ul style="margin:4px 0 0;color:var(--muted);font-size:14.5px">
+    <li><b>Network Anomaly &amp; Fraud Detection:</b> unsupervised ML on streaming telemetry detecting anomalous traffic, DDoS signatures, and fraudulent behavior across high-volume distribution nodes.</li>
+    <li><b>Secure API &amp; Data Architecture:</b> specs + access-control for the GRAPA API facade enabling secure authenticated retrieval from the enterprise data lake (HUB DATA France).</li>
+    <li><b>Threat Telemetry Pipelines:</b> Python ingestion parsing XML network logs into Elasticsearch / Apache Kudu as a tamper-proof repository for real-time security auditing.</li>
+    <li><b>Data Governance:</b> internal R package interfacing Impala / Hadoop, standardizing secure data-access protocols across the data-science org.</li>
+  </ul>
+</div></section>
+
+<section id="journey"><div class="wrap">
+  <h2>Journey</h2>
+  <p style="color:var(--muted);font-size:14.5px;margin:0 0 4px">US &amp; Europe — career across 3 countries, 5 cities</p>
+  <div id="map"></div>
 </div></section>
 
 <section id="skills"><div class="wrap">
   <h2>Skills</h2>
-  <div class="skillrow"><b>AI Safety &amp; Security:</b> LLM evaluation &amp; safety/robustness metrics, red-teaming, adversarial ML, backdoor/sleeper-agent detection, deception probing, interpretability (SHAP/LIME), formal verification (Isabelle/HOL), threat modeling (CVSS), OWASP Top 10 for LLMs</div><div class="skillrow"><b>LLMs &amp; Alignment:</b> fine-tuning (LoRA/QLoRA, MoE), DPO/RLHF, RAG, agentic systems (LangGraph), vLLM; PyTorch, Hugging Face, GNN/GAT</div><div class="skillrow"><b>Security &amp; Privacy Infra:</b> HIPAA/PII-safe NLP, GDPR data sanitization, anomaly/fraud/DDoS detection, secure data architecture; Hadoop, Kudu, Elasticsearch, Snowflake</div><div class="skillrow"><b>Data &amp; Languages:</b> Python, SQL, R, PySpark; Docker, MLflow</div>
+  <div class="skillrow"><b>AI Safety &amp; Security:</b> LLM evaluation &amp; safety/robustness metrics, red-teaming, adversarial ML, backdoor/sleeper-agent detection, deception probing, interpretability (SHAP/LIME), formal verification (Isabelle/HOL), threat modeling (CVSS), OWASP Top 10 for LLMs</div>
+  <div class="skillrow"><b>LLMs &amp; Alignment:</b> fine-tuning (LoRA/QLoRA, MoE), DPO/RLHF, RAG, agentic systems (LangGraph), vLLM; PyTorch, Hugging Face, GNN/GAT</div>
+  <div class="skillrow"><b>Security &amp; Privacy Infra:</b> HIPAA/PII-safe NLP, GDPR data sanitization, anomaly/fraud/DDoS detection, secure data architecture; Hadoop, Kudu, Elasticsearch, Snowflake</div>
+  <div class="skillrow"><b>Data &amp; Languages:</b> Python, SQL, R, PySpark; Docker, MLflow</div>
 </div></section>
 
 <section id="certifications"><div class="wrap">
   <h2>Certifications</h2>
-  <div class="chips"><span>AWS Certified AI Practitioner (AIF-C01) — exp. Nov 2026</span><span>NVIDIA-Certified Associate: GenAI &amp; LLMs (NCA-GENL) — exp. Dec 2026</span><span>OWASP Top 10 for LLM Applications</span></div>
+  <div class="chips">
+    <span>AWS Certified AI Practitioner (AIF-C01), exp. Nov 2026</span>
+    <span>AWS Certified ML Specialty (MLS-C01), exp. Dec 2026</span>
+    <span>Anthropic Claude Developer (CCDV-F), exp. Dec 2026</span>
+    <span>OWASP Top 10 for LLM Applications</span>
+  </div>
 </div></section>
 
 <section id="contact"><div class="wrap">
   <h2>Contact</h2>
-  <p>Reach me at <a class="inline" href="mailto:victorine.wakam@gmail.com">victorine.wakam@gmail.com</a>,
-  or on <a class="inline" href="https://github.com/Victorine07" target="_blank">GitHub</a> and
-  <a class="inline" href="https://scholar.google.com/citations?user=8LaXG4AAAAAJ" target="_blank">Google Scholar</a>.</p>
+  <div class="cta-box">
+    <p>Open to new opportunities in AI security, safety research, and responsible AI governance. Best reached by email.</p>
+    <a class="cta-btn" href="mailto:victorine.wakam@gmail.com">✉ victorine.wakam@gmail.com</a>
+  </div>
+  <p style="margin-top:16px;color:var(--muted);font-size:14px">
+    Also on <a class="inline" href="https://github.com/Victorine07" target="_blank">GitHub</a>,
+    <a class="inline" href="https://www.linkedin.com/in/victorine-younang/" target="_blank">LinkedIn</a>, and
+    <a class="inline" href="https://scholar.google.com/citations?user=8LaXG4AAAAAJ" target="_blank">Google Scholar</a>.
+  </p>
 </div></section>
 
 <footer><div class="wrap">© 2026 Victorine Younang · AI Security &amp; Safety Researcher</div></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var map=L.map('map',{scrollWheelZoom:false});
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom:19
+  }).addTo(map);
+  var stops=[
+    {lat:49.4432,lng:1.0999,color:'#0a7d52',label:'ESIGELEC · Rouen, France',dates:'2016–2019 · Education'},
+    {lat:48.8566,lng:2.3522,color:'#3b4cca',label:'Orange Telecom · Paris, France',dates:'2017–2019'},
+    {lat:50.8503,lng:4.3517,color:'#3b4cca',label:'Orange Telecom · Brussels, Belgium',dates:'2017–2019'},
+    {lat:48.852,lng:2.355,color:'#3b4cca',label:'EDF (Électricité de France) · Paris, France',dates:'2019–2021'},
+    {lat:42.6628,lng:-83.2132,color:'#3b4cca',label:'Oakland University · Michigan, USA',dates:'2020–2026 · Ph.D.'},
+    {lat:47.6062,lng:-122.3321,color:'#3b4cca',label:'Rec Room · Seattle, WA',dates:'Summer 2023'},
+    {lat:42.3314,lng:-83.0458,color:'#7c3aed',label:'Health Alliance Plan · Detroit, MI',dates:'Summer 2025'},
+    {lat:33.2998,lng:-96.7842,color:'#dc2626',label:'Celina, TX',dates:'Current'}
+  ];
+  var bounds=[];
+  stops.forEach(function(s){
+    bounds.push([s.lat,s.lng]);
+    L.circleMarker([s.lat,s.lng],{radius:s.color==='#dc2626'?10:8,fillColor:s.color,color:'#fff',weight:2,fillOpacity:.9})
+      .bindPopup('<b>'+s.label+'</b><br><span style="color:#5b6472;font-size:13px">'+s.dates+'</span>')
+      .addTo(map);
+  });
+  map.fitBounds(bounds,{padding:[30,30]});
+})();
+function toggleProj(btn){
+  var card=btn.closest('.proj-card');
+  var det=card.querySelector('.proj-details');
+  var open=det.classList.toggle('open');
+  btn.textContent=open?'− Details':'+ Details';
+}
+</script>
 </body>
 </html>

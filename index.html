@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Victorine Younang, Ph.D. — Machine Learning Researcher &amp; Engineer</title>
-<meta name="description" content="Victorine Younang, Ph.D. — Machine Learning Researcher &amp; Engineer.">
+<meta name="description" content="Applied ML Scientist and Big Data Engineer. Ph.D. Computer Science. Production agentic systems, LLMs, Graph Neural Networks.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
   :root{--ink:#15181d;--muted:#5b6472;--accent:#3b4cca;--accent2:#0a7d52;--line:#e7e9ee;--bg:#ffffff;--chip:#f3f4f8}
   *{box-sizing:border-box}
@@ -35,7 +36,6 @@
   ul.pub{list-style:none;padding:0;margin:0}
   ul.pub li{padding:10px 0;border-top:1px dashed var(--line)}
   ul.pub li:first-child{border-top:none}
-  ul.pub .venue{color:var(--accent);font-weight:600}
   .row{display:flex;justify-content:space-between;gap:14px;align-items:baseline;flex-wrap:wrap}
   .row .when{color:var(--muted);font-size:13px;white-space:nowrap}
   .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
@@ -50,6 +50,27 @@
   .initials{display:none;width:118px;height:118px;border-radius:50%;color:#fff;font-size:44px;
             font-weight:700;align-items:center;justify-content:center;letter-spacing:1px;
             background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  #map{height:320px;border-radius:12px;border:1px solid var(--line);margin-top:16px;z-index:1}
+  .proj-card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff;margin-bottom:14px}
+  .proj-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .proj-title{font-size:17px;font-weight:600;margin:0 0 3px}
+  .proj-sub{color:var(--muted);font-size:14px;margin:0 0 6px}
+  .proj-links{font-size:13px;margin-top:4px}
+  .proj-links a{color:var(--accent);text-decoration:none}
+  .proj-links a:hover{text-decoration:underline}
+  .expand-btn{flex-shrink:0;background:var(--chip);border:1px solid var(--line);border-radius:20px;
+              padding:5px 13px;font-size:13px;cursor:pointer;color:var(--muted);white-space:nowrap;margin-top:2px}
+  .expand-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .proj-details{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .proj-details.open{max-height:3000px}
+  .proj-details ul{margin:10px 0 2px;padding-left:20px;color:var(--muted);font-size:14.5px}
+  .proj-details ul li{margin:5px 0}
+  .proj-details ul li b{color:var(--ink)}
+  .cta-box{background:var(--chip);border-radius:12px;padding:24px 28px;margin-top:8px}
+  .cta-box p{color:var(--muted);margin:0 0 14px;font-size:16px}
+  .cta-btn{display:inline-block;padding:10px 22px;background:var(--accent);color:#fff;border-radius:22px;
+           text-decoration:none;font-size:15px;font-weight:600}
+  .cta-btn:hover{opacity:.85}
   @media(max-width:620px){.grid{grid-template-columns:1fr}h1{font-size:28px}}
 </style>
 </head>
@@ -57,8 +78,8 @@
 
 <nav><div class="wrap">
   <a href="#about">About</a><a href="#focus">Focus</a><a href="#publications">Publications</a>
-  <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-  <a href="#certifications">Certs</a><a href="#contact">Contact</a>
+  <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#journey">Journey</a>
+  <a href="#skills">Skills</a><a href="#certifications">Certs</a><a href="#contact">Contact</a>
 </div></nav>
 
 <header><div class="wrap hdr">
@@ -69,10 +90,11 @@
   </div>
   <div class="hdr-text">
     <h1>Victorine Younang, Ph.D.</h1>
-    <p class="tag">Machine Learning Researcher &amp; Engineer — Ph.D., Computer Science</p>
+    <p class="tag">Machine Learning Researcher &amp; Engineer, Ph.D., Computer Science</p>
     <div class="links">
-      <a href="CV.pdf" target="_blank" style="background:var(--accent);color:#fff;border-color:var(--accent)">⬇ Download CV</a>
-      <a href="mailto:victorine.wakam@gmail.com">✉ victorine.wakam@gmail.com</a>
+      <a href="CV.pdf" target="_blank" style="background:var(--accent);color:#fff;border-color:var(--accent)">&#8595; Download CV</a>
+      <a href="mailto:victorine.wakam@gmail.com">&#9993; victorine.wakam@gmail.com</a>
+      <a href="https://www.linkedin.com/in/victorine-younang/" target="_blank">LinkedIn</a>
       <a href="https://github.com/Victorine07" target="_blank">GitHub</a>
       <a href="https://scholar.google.com/citations?user=8LaXG4AAAAAJ" target="_blank">Google Scholar</a>
     </div>
@@ -81,46 +103,223 @@
 
 <section id="about"><div class="wrap">
   <h2>About</h2>
-  <p class="lead">Applied ML Scientist (Ph.D., Computer Science) and Big Data Engineer specializing in foundation-model fine-tuning, Graph Neural Networks, and scalable real-time inference. Expert across the end-to-end ML lifecycle — from distributed Hadoop/PySpark data pipelines to curriculum fine-tuning stacks for MoE LLMs on constrained GPUs. Proven production impact (a graph recommender driving +33% session time at Rec Room); combines rigorous modeling (Bayesian methods, GNNs) with deep systems engineering (PyTorch, DDP, vLLM).</p>
+  <p class="lead">Applied ML Scientist (Ph.D., Computer Science) and Big Data Engineer specializing in foundation-model fine-tuning, Graph Neural Networks, and scalable real-time inference. Expert across the end-to-end ML lifecycle, from distributed Hadoop/PySpark data pipelines to curriculum fine-tuning stacks for MoE LLMs on constrained GPUs. Proven production impact (a graph recommender driving +33% session time at Rec Room); combines rigorous modeling (Bayesian methods, GNNs) with deep systems engineering (PyTorch, DDP, vLLM).</p>
 </div></section>
 
 <section id="focus"><div class="wrap">
   <h2>Focus Areas</h2>
-  <div class="grid"><div class="card"><h3>ML &amp; Deep Learning</h3><p>PyTorch, Hugging Face, PyTorch Geometric; Graph Neural Networks (GAT/GNN), foundation models, transformers, BioBERT/ClinicalBERT, representation learning, anomaly detection</p></div><div class="card"><h3>LLMs &amp; Training</h3><p>LLM fine-tuning (LoRA/QLoRA, PEFT, MoE), RAG, DPO/RLHF, custom LLM evaluation &amp; benchmarking, 4-bit NF4 quantization, gradient checkpointing, Distributed Data Parallel (DDP), vLLM serving</p></div><div class="card"><h3>Big Data &amp; Systems</h3><p>PySpark, Apache Spark, Hadoop/HDFS, MapReduce, Kudu, Elasticsearch, Impala, SQL; Docker, Kubernetes, MLflow, MLOps / model lifecycle, HPC/Slurm</p></div><div class="card"><h3>Modeling &amp; Eval</h3><p>Bayesian inference, VAR/time-series forecasting, ST-GNNs, adversarial robustness, responsible AI, ROC-AUC/PR-AUC, ablation studies; Python, R</p></div></div>
+  <div class="grid">
+    <div class="card"><h3>ML &amp; Deep Learning</h3><p>PyTorch, Hugging Face, PyTorch Geometric; Graph Neural Networks (GAT/GNN), foundation models, transformers, BioBERT/ClinicalBERT, representation learning, anomaly detection</p></div>
+    <div class="card"><h3>LLMs &amp; Training</h3><p>LLM fine-tuning (LoRA/QLoRA, PEFT, MoE), RAG, DPO/RLHF, custom LLM evaluation &amp; benchmarking, 4-bit NF4 quantization, gradient checkpointing, Distributed Data Parallel (DDP), vLLM serving</p></div>
+    <div class="card"><h3>Big Data &amp; Systems</h3><p>PySpark, Apache Spark, Hadoop/HDFS, MapReduce, Kudu, Elasticsearch, Impala, SQL; Docker, Kubernetes, MLflow, MLOps / model lifecycle, HPC/Slurm</p></div>
+    <div class="card"><h3>Modeling &amp; Eval</h3><p>Bayesian inference, VAR/time-series forecasting, ST-GNNs, adversarial robustness, responsible AI, ROC-AUC/PR-AUC, ablation studies; Python, R</p></div>
+  </div>
 </div></section>
 
 <section id="publications"><div class="wrap">
   <h2>Selected Publications</h2>
-  <ul class="pub"><li>V. Younang et al. "Security Risk Assessment with Bayesian Attack Graphs and Complex Probabilities." <i>IEEE TDSC</i>, 2025.</li><li>V. Younang et al. "Extending IoT Devices' Network Lifetime." <i>IEEE TSC</i>, 2025.</li><li>V. Younang et al. "Comparative Analysis of Users' Concerns and Government Policies on Autonomous Vehicles." <i>Springer ICIOT / LNCS</i>, 2022.</li><li>V. Younang et al. "CipherGuard: Reference-Free Detection of Backdoors in Cipher Implementations." <i>Under review, NDSS 2027.</i></li><li>V. Younang et al. "Tiered Isomorphic Alignment: Curriculum Fine-Tuning across Six LLMs." <i>Under review, AAAI 2027.</i></li><li>V. Younang et al. "CryptoGraph: Learning Security Properties of Block Ciphers with Graph ML." <i>In prep (resubmission), IEEE TIFS.</i></li></ul>
+  <ul class="pub">
+    <li>V. Younang et al. "Security Risk Assessment with Bayesian Attack Graphs and Complex Probabilities." <i>IEEE TDSC</i>, 2025.</li>
+    <li>V. Younang et al. "Extending IoT Devices' Network Lifetime." <i>IEEE TSC</i>, 2025.</li>
+    <li>V. Younang et al. "Comparative Analysis of Users' Concerns and Government Policies on Autonomous Vehicles." <i>Springer ICIOT / LNCS</i>, 2022.</li>
+    <li>V. Younang et al. "CipherGuard: Reference-Free Detection of Backdoors in Cipher Implementations." <i>Under review, NDSS 2027.</i></li>
+    <li>V. Younang et al. "Tiered Isomorphic Alignment: Curriculum Fine-Tuning across Six LLMs." <i>Under review, AAAI 2027.</i></li>
+    <li>V. Younang et al. "CryptoGraph: Learning Security Properties of Block Ciphers with Graph ML." <i>In prep (resubmission), IEEE TIFS.</i></li>
+  </ul>
 </div></section>
 
 <section id="projects"><div class="wrap">
   <h2>Selected Projects</h2>
-  <div class="grid"><div class="card"><h3>RepoSage</h3><p>RepoSage — Agentic, execution-verified RAG (LangGraph, vLLM, Qdrant, DPO): dual-source code-&amp;-docs RAG that generates, executes in a sandbox, and self-corrects against a library's own tests; DPO alignment from execution-feedback preferences.</p></div><div class="card"><h3>CipherGuard</h3><p>CipherGuard — reference-free backdoor detection (GAT + AST, Isabelle/HOL-verified corpus): catches test-vector-compliant backdoors with zero false positives on 44 ciphers (NDSS 2027).</p></div><div class="card"><h3>NLP at Scale</h3><p>NLP at Scale — BERT stance/sentiment classifier: scraped 19,000+ posts; fine-tuned BERT to 96% accuracy with temporal topic modeling (Springer LNCS).</p></div></div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">RepoSage &mdash; Production Agentic RAG System</p>
+        <p class="proj-sub">Production LangGraph multi-agent RAG with hybrid retrieval, MCP server, sandboxed code execution, self-correction loops, and LLM-as-judge evaluation &mdash; 93.33% Pass@1, live on HuggingFace Spaces.</p>
+        <div class="chips"><span>Python</span><span>LangGraph</span><span>Claude API</span><span>Qdrant</span><span>BM25</span><span>RRF</span><span>FastAPI</span><span>Docker</span><span>MCP</span><span>HuggingFace Spaces</span></div>
+        <div class="proj-links"><a href="https://github.com/Victorine07/Repo-Sage" target="_blank">GitHub</a> &middot; <a href="https://huggingface.co/spaces/Victorine07/reposage" target="_blank">Live Demo</a></div>
+      </div>
+      <button class="expand-btn" onclick="toggleProj(this)">+ Details</button>
+    </div>
+    <div class="proj-details">
+      <ul>
+        <li><b>Agentic orchestration:</b> designed a stateful LangGraph StateGraph with conditional cycles &mdash; retrieve &rarr; generate &rarr; execute &rarr; self-correct &mdash; and bounded retry logic (max 2 retries on execution failure); the agent autonomously diagnoses and repairs broken code without human intervention.</li>
+        <li><b>MCP server:</b> built an MCPServer (mcp 2.x SDK) exposing three tools &mdash; search_empyrical (hybrid retrieval), execute_snippet (sandboxed execution), ask_reposage (full agent pipeline) &mdash; registered with Claude Desktop over stdio transport; verified end-to-end tool calls from live Claude Desktop conversations.</li>
+        <li><b>LLM integration:</b> integrated Claude (Anthropic) and Gemini APIs via LangChain for code generation; implemented sandboxed subprocess execution with stdout/stderr capture; self-correction loop feeds execution errors back into the LLM for targeted fixes.</li>
+        <li><b>Retrieval pipeline:</b> ingested the empyrical financial-metrics library at function level using AST-based chunking (122 functions); indexed dense embeddings (BAAI/bge-small-en-v1.5) in Qdrant and a parallel BM25 index; merged rankings via Reciprocal Rank Fusion (RRF) and reranked with a cross-encoder (ms-marco-MiniLM-L-6-v2).</li>
+        <li><b>Production deployment:</b> REST API (FastAPI, POST /query + GET /health) with Pydantic validation and auto-generated Swagger docs; Dockerized with python:3.11-slim; Streamlit demo UI; public Gradio app on HuggingFace Spaces (ZeroGPU, free tier).</li>
+        <li><b>Evaluation:</b> evaluated on a held-out 15-query gold set using an LLM-as-judge framework: 93.33% Pass@1, Context Recall 0.92, Faithfulness 0.88.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">Clinical AI &mdash; Healthcare NLP &amp; Readmission Prediction (Self-Directed)</p>
+        <p class="proj-sub">Multimodal BioBERT/ClinicalBERT system predicting 30-day hospital readmissions from real EHR data; HIPAA-compliant Snowflake infrastructure with clinical NER, fairness auditing, and SHAP interpretability.</p>
+        <div class="chips"><span>BioBERT</span><span>ClinicalBERT</span><span>PyTorch</span><span>XGBoost</span><span>Snowflake (HIPAA)</span><span>SHAP</span><span>NER</span><span>Docker</span></div>
+      </div>
+      <button class="expand-btn" onclick="toggleProj(this)">+ Details</button>
+    </div>
+    <div class="proj-details">
+      <ul>
+        <li>Multimodal deep-learning system fusing BioBERT/ClinicalBERT text embeddings with structured tabular features to predict high-risk 30-day hospital readmissions from real EHR data; HIPAA-compliant Snowflake infrastructure.</li>
+        <li>Transformer NER pipeline extracting medical entities, social determinants of health (SDoH), and complex temporal negations from raw Epic EHR prose (MIMIC-III).</li>
+        <li>Benchmarked XGBoost/LightGBM vs. deep BioBERT/ClinicalBERT models, tuning for Recall/Sensitivity on critical risk identification; SHAP/LIME interpretability translating model decisions into cost-saving estimates for clinical directors.</li>
+        <li>Demographic-subgroup fairness auditing (age, zip-code, intersectional cohorts); calibration analysis; Dockerized microservice deployment under HIPAA constraints.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">LLM Deception &amp; Alignment Probing</p>
+        <p class="proj-sub">Representation-engineering probes across Qwen3 (0.6B&ndash;32B); found the probe keyed on persona/chat-template tokens rather than semantic content; proposed incentive-based post-training mitigation.</p>
+        <div class="chips"><span>Representation Engineering</span><span>Qwen3 0.6B&ndash;32B</span><span>PyTorch</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">CipherGuard &mdash; Reference-Free Backdoor Detection</p>
+        <p class="proj-sub">GAT + AST classifier on an Isabelle/HOL-verified corpus; zero false positives on 44 adversarial ciphers. Under review, NDSS 2027.</p>
+        <div class="chips"><span>GAT</span><span>AST</span><span>Isabelle/HOL</span><span>PyTorch Geometric</span></div>
+      </div>
+      <button class="expand-btn" onclick="toggleProj(this)">+ Details</button>
+    </div>
+    <div class="proj-details">
+      <ul>
+        <li>Reference-free backdoor detection pipeline: Abstract Syntax Tree (AST) analysis + Graph Attention Network (GAT) classifier trained on an Isabelle/HOL-formally-verified corpus of 44 cipher implementations.</li>
+        <li>Catches test-vector-compliant backdoors (branchless key leaks, hidden state injection) that pass all standard constant-time analyzers &mdash; zero false positives on 44 adversarial cipher variants.</li>
+        <li>Novel AI supply-chain threat vector documentation; addresses the OWASP Top 10 for LLMs model supply-chain risk category. Under review, NDSS 2027.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-hdr">
+      <div>
+        <p class="proj-title">NLP at Scale &mdash; BERT Stance/Sentiment Classifier</p>
+        <p class="proj-sub">Scraped 19,000+ posts; fine-tuned BERT to 96% accuracy with temporal topic modeling. Springer ICIOT / LNCS 2022.</p>
+        <div class="chips"><span>BERT</span><span>PyTorch</span><span>NLP</span></div>
+      </div>
+    </div>
+  </div>
+
 </div></section>
 
 <section id="experience"><div class="wrap">
   <h2>Experience</h2>
-  <div class="row"><h3>Oakland University — Applied ML Researcher</h3><span class="when">Sep 2020 – Apr 2026 · Michigan, USA</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>LLM Fine-Tuning &amp; Distributed Training (TIA):</b> curriculum fine-tuning of six foundation LLMs (incl. DeepSeek-V2 MoE, Qwen2.5) on constrained 16 GB GPUs via 4-bit NF4 quantization, gradient checkpointing, label-masked PEFT, and Distributed Data Parallel (DDP).</li><li><b>Graph Representation Learning (CryptoGraph):</b> hybrid Graph Attention Network + MLP in PyTorch Geometric over AST graphs; variant-aware stratified sampling + GraphNorm → F1 0.94 with robust zero-shot generalization.</li><li><b>Dynamic Probabilistic Modeling:</b> complex-valued Bayesian Attack Graph for real-time risk scoring; Vector AutoRegression (VAR) forecasting driving a dynamic allocation policy (+20% system lifetime, 95% request fulfillment).</li><li><b>Custom ML Evaluation:</b> neuro-symbolic metrics (syntactic validity, semantic match, value consistency) beyond BLEU/CodeBLEU.</li></ul><div class="row"><h3>Health Alliance Plan (HAP) — Applied Scientist (NLP &amp; Multimodal AI)</h3><span class="when">Summer 2025 · Detroit, MI</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Multimodal Representation Learning:</b> multimodal deep-learning system fusing BioBERT/ClinicalBERT text embeddings with structured tabular features to predict high-risk 30-day hospital readmissions.</li><li><b>Advanced NLP &amp; Inference:</b> transformer NER pipeline extracting medical entities, social determinants of health (SDoH), and complex temporal negations from raw Epic EHR prose.</li><li><b>Deep-Learning Benchmarking:</b> PyTorch / scikit-learn frameworks benchmarking multimodal DNNs against tuned tree-based baselines (latency / Recall tradeoffs).</li><li><b>Scalable Deployment:</b> productionized the NLP + classification architecture as a modular, Dockerized microservice for healthcare management systems.</li></ul><div class="row"><h3>Rec Room — Applied Scientist (Recommendation Systems)</h3><span class="when">Summer 2023 · Seattle, WA</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Graph-Based Recommendation Engine:</b> built and productionized a large-scale recommender (Node2Vec / random-walk embeddings) over a bipartite graph of 1,000+ virtual environments.</li><li><b>Real-Time Inference &amp; Latency:</b> refactored the Python similarity-inference pipeline, −10% serving latency under peak concurrency; cold-start logic from structural graph properties.</li><li><b>Online Impact:</b> shipped to production → statistically significant +33% average user session time on first deployment.</li></ul><div class="row"><h3>EDF (Électricité de France) — Applied ML Scientist (Graph ML &amp; Time-Series)</h3><span class="when">Summer 2021 · Paris, France</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Spatial-Temporal GNNs:</b> designed and trained deep ST-GNN architectures in PyTorch capturing non-linear temporal + physical spatial dependencies across the low-voltage distribution grid.</li><li><b>Probabilistic Loss Engineering:</b> quantile / Pinball loss and Gaussian processes for strict 24-hour confidence intervals on renewable generation.</li><li><b>Physics-Informed DL:</b> custom loss regularizers penalizing physically impossible predictions (capacity limits, electrical topologies, Kirchhoff's laws).</li><li><b>Scalable Deployment:</b> Dockerized PyTorch inference + PySpark spatio-temporal preprocessing microservices for Smart Grid operations.</li></ul><div class="row"><h3>EDF (Électricité de France) — Big Data &amp; Machine Learning Engineer</h3><span class="when">2019–2020 · Paris, France</span></div><ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px"><li><b>Distributed Data Pipelines:</b> architected scalable ETL across Hadoop / MapReduce clusters processing millions of customer profiles for a consent-management platform.</li><li><b>Data Quality for ML:</b> engineered GDPR data-sanitization and algorithmic validation workflows, eliminating contamination and reducing downstream ML/analytics errors by 30%.</li></ul><div class="row"><h3>Orange Telecom — Applied ML Scientist (Data Architecture &amp; Forecasting)</h3><span class="when">2017–2019 · Paris, France &amp; Brussels, Belgium</span></div><ul style="margin:4px 0 0;color:var(--muted);font-size:14.5px"><li><b>Large-Scale ML Infrastructure:</b> architected the data topology for the HUB DATA France initiative, mapping application dependencies to optimize training-data flow into distributed Hadoop clusters.</li><li><b>Algorithmic Time-Series Forecasting:</b> multivariate predictive models in R forecasting Hadoop connection volumes and query loads → dynamic allocation of cluster compute during peak traffic.</li><li><b>Real-Time Telemetry:</b> high-throughput Python pipelines processing unstructured XML network logs into low-latency feature stores (Elasticsearch, Apache Kudu).</li><li><b>Distributed Compute Optimization:</b> authored an R-to-Impala connection package optimizing distributed storage/retrieval and standardizing the applied-research team's pipeline.</li></ul>
+  <div class="row"><h3>Oakland University, Applied ML Researcher</h3><span class="when">Sep 2020 &ndash; Apr 2026 &middot; Michigan, USA</span></div>
+  <ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px">
+    <li><b>LLM Fine-Tuning &amp; Distributed Training (TIA):</b> curriculum fine-tuning of six foundation LLMs (incl. DeepSeek-V2 MoE, Qwen2.5) on constrained 16 GB GPUs via 4-bit NF4 quantization, gradient checkpointing, label-masked PEFT, and Distributed Data Parallel (DDP).</li>
+    <li><b>Graph Representation Learning (CryptoGraph):</b> hybrid Graph Attention Network + MLP in PyTorch Geometric over AST graphs; variant-aware stratified sampling + GraphNorm &rarr; F1 0.94 with robust zero-shot generalization.</li>
+    <li><b>Dynamic Probabilistic Modeling:</b> complex-valued Bayesian Attack Graph for real-time risk scoring; Vector AutoRegression (VAR) forecasting driving a dynamic allocation policy (+20% system lifetime, 95% request fulfillment).</li>
+    <li><b>Custom ML Evaluation:</b> neuro-symbolic metrics (syntactic validity, semantic match, value consistency) beyond BLEU/CodeBLEU.</li>
+  </ul>
+  <div class="row"><h3>Rec Room, Applied Scientist (Recommendation Systems)</h3><span class="when">Summer 2023 &middot; Seattle, WA</span></div>
+  <ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px">
+    <li><b>Graph-Based Recommendation Engine:</b> built and productionized a large-scale recommender (Node2Vec / random-walk embeddings) over a bipartite graph of 1,000+ virtual environments.</li>
+    <li><b>Real-Time Inference &amp; Latency:</b> refactored the Python similarity-inference pipeline, &minus;10% serving latency under peak concurrency; cold-start logic from structural graph properties.</li>
+    <li><b>Online Impact:</b> shipped to production &rarr; statistically significant +33% average user session time on first deployment.</li>
+  </ul>
+  <div class="row"><h3>EDF (Électricité de France), Applied ML Scientist</h3><span class="when">Summer 2021 &middot; Paris, France</span></div>
+  <ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px">
+    <li><b>Spatial-Temporal GNNs:</b> designed and trained deep ST-GNN architectures in PyTorch capturing non-linear temporal + physical spatial dependencies across the low-voltage distribution grid.</li>
+    <li><b>Probabilistic Loss Engineering:</b> quantile / Pinball loss and Gaussian processes for strict 24-hour confidence intervals on renewable generation.</li>
+    <li><b>Physics-Informed DL:</b> custom loss regularizers penalizing physically impossible predictions (capacity limits, electrical topologies, Kirchhoff's laws).</li>
+    <li><b>Scalable Deployment:</b> Dockerized PyTorch inference + PySpark spatio-temporal preprocessing microservices for Smart Grid operations.</li>
+  </ul>
+  <div class="row"><h3>EDF (Électricité de France), Big Data &amp; ML Engineer</h3><span class="when">2019&ndash;2020 &middot; Paris, France</span></div>
+  <ul style="margin:4px 0 16px;color:var(--muted);font-size:14.5px">
+    <li><b>Distributed Data Pipelines:</b> architected scalable ETL across Hadoop / MapReduce clusters processing millions of customer profiles for a consent-management platform.</li>
+    <li><b>Data Quality for ML:</b> engineered GDPR data-sanitization and algorithmic validation workflows, eliminating contamination and reducing downstream ML/analytics errors by 30%.</li>
+  </ul>
+  <div class="row"><h3>Orange Telecom, Applied ML Scientist</h3><span class="when">2017&ndash;2019 &middot; Paris, France &amp; Brussels, Belgium</span></div>
+  <ul style="margin:4px 0 0;color:var(--muted);font-size:14.5px">
+    <li><b>Large-Scale ML Infrastructure:</b> architected the data topology for the HUB DATA France initiative, mapping application dependencies to optimize training-data flow into distributed Hadoop clusters.</li>
+    <li><b>Algorithmic Time-Series Forecasting:</b> multivariate predictive models in R forecasting Hadoop connection volumes and query loads &rarr; dynamic allocation of cluster compute during peak traffic.</li>
+    <li><b>Real-Time Telemetry:</b> high-throughput Python pipelines processing unstructured XML network logs into low-latency feature stores (Elasticsearch, Apache Kudu).</li>
+    <li><b>Distributed Compute Optimization:</b> authored an R-to-Impala connection package optimizing distributed storage/retrieval and standardizing the applied-research team's pipeline.</li>
+  </ul>
+</div></section>
+
+<section id="journey"><div class="wrap">
+  <h2>Journey</h2>
+  <p style="color:var(--muted);font-size:14.5px;margin:0 0 4px">US &amp; Europe &mdash; career across 3 countries, 5 cities</p>
+  <div id="map"></div>
 </div></section>
 
 <section id="skills"><div class="wrap">
   <h2>Skills</h2>
-  <div class="skillrow"><b>ML &amp; Deep Learning:</b> PyTorch, Hugging Face, PyTorch Geometric; Graph Neural Networks (GAT/GNN), foundation models, transformers, BioBERT/ClinicalBERT, representation learning, anomaly detection</div><div class="skillrow"><b>LLMs &amp; Training:</b> LLM fine-tuning (LoRA/QLoRA, PEFT, MoE), RAG, DPO/RLHF, custom LLM evaluation &amp; benchmarking, 4-bit NF4 quantization, gradient checkpointing, Distributed Data Parallel (DDP), vLLM serving</div><div class="skillrow"><b>Big Data &amp; Systems:</b> PySpark, Apache Spark, Hadoop/HDFS, MapReduce, Kudu, Elasticsearch, Impala, SQL; Docker, Kubernetes, MLflow, MLOps / model lifecycle, HPC/Slurm</div><div class="skillrow"><b>Modeling &amp; Eval:</b> Bayesian inference, VAR/time-series forecasting, ST-GNNs, adversarial robustness, responsible AI, ROC-AUC/PR-AUC, ablation studies; Python, R</div>
+  <div class="skillrow"><b>ML &amp; Deep Learning:</b> PyTorch, Hugging Face, PyTorch Geometric; Graph Neural Networks (GAT/GNN), foundation models, transformers, BioBERT/ClinicalBERT, representation learning, anomaly detection</div>
+  <div class="skillrow"><b>LLMs &amp; Training:</b> LLM fine-tuning (LoRA/QLoRA, PEFT, MoE), RAG, DPO/RLHF, custom LLM evaluation &amp; benchmarking, 4-bit NF4 quantization, gradient checkpointing, Distributed Data Parallel (DDP), vLLM serving</div>
+  <div class="skillrow"><b>Big Data &amp; Systems:</b> PySpark, Apache Spark, Hadoop/HDFS, MapReduce, Kudu, Elasticsearch, Impala, SQL; Docker, Kubernetes, MLflow, MLOps / model lifecycle, HPC/Slurm</div>
+  <div class="skillrow"><b>Modeling &amp; Eval:</b> Bayesian inference, VAR/time-series forecasting, ST-GNNs, adversarial robustness, responsible AI, ROC-AUC/PR-AUC, ablation studies; Python, R</div>
 </div></section>
 
 <section id="certifications"><div class="wrap">
   <h2>Certifications</h2>
-  <div class="chips"><span>AWS Certified AI Practitioner (AIF-C01) — exp. Nov 2026</span><span>NVIDIA-Certified Associate: GenAI &amp; LLMs (NCA-GENL) — exp. Dec 2026</span><span>OWASP Top 10 for LLM Applications</span></div>
+  <div class="chips">
+    <span>AWS Certified AI Practitioner (AIF-C01), exp. Nov 2026</span>
+    <span>AWS Certified Machine Learning Specialty (MLS-C01), exp. Dec 2026</span>
+    <span>Anthropic Claude Developer Certification (CCDV-F), exp. Dec 2026</span>
+    <span>OWASP Top 10 for LLM Applications</span>
+  </div>
 </div></section>
 
 <section id="contact"><div class="wrap">
   <h2>Contact</h2>
-  <p>Reach me at <a class="inline" href="mailto:victorine.wakam@gmail.com">victorine.wakam@gmail.com</a>,
-  or on <a class="inline" href="https://github.com/Victorine07" target="_blank">GitHub</a> and
-  <a class="inline" href="https://scholar.google.com/citations?user=8LaXG4AAAAAJ" target="_blank">Google Scholar</a>.</p>
+  <div class="cta-box">
+    <p>Open to new opportunities in ML research and applied AI &mdash; production systems, LLMs, healthcare AI, and responsible AI. Best reached by email.</p>
+    <a class="cta-btn" href="mailto:victorine.wakam@gmail.com">&#9993; victorine.wakam@gmail.com</a>
+  </div>
+  <p style="margin-top:16px;color:var(--muted);font-size:14px">
+    <a class="inline" href="https://www.linkedin.com/in/victorine-younang/" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp;
+    <a class="inline" href="https://github.com/Victorine07" target="_blank">GitHub</a> &nbsp;&middot;&nbsp;
+    <a class="inline" href="https://scholar.google.com/citations?user=8LaXG4AAAAAJ" target="_blank">Google Scholar</a>
+  </p>
 </div></section>
 
-<footer><div class="wrap">© 2026 Victorine Younang · Machine Learning Researcher &amp; Engineer</div></footer>
+<footer><div class="wrap">&copy; 2026 Victorine Younang &middot; Machine Learning Researcher &amp; Engineer</div></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var map=L.map('map',{scrollWheelZoom:false});
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom:19
+  }).addTo(map);
+  var stops=[
+    {lat:49.4432,lng:1.0999,color:'#0a7d52',label:'ESIGELEC &middot; Rouen, France',dates:'2016&ndash;2019 &middot; Education'},
+    {lat:48.8566,lng:2.3522,color:'#3b4cca',label:'Orange Telecom &middot; Paris, France',dates:'2017&ndash;2019'},
+    {lat:50.8503,lng:4.3517,color:'#3b4cca',label:'Orange Telecom &middot; Brussels, Belgium',dates:'2017&ndash;2019'},
+    {lat:48.852,lng:2.355,color:'#3b4cca',label:'EDF (Électricité de France) &middot; Paris, France',dates:'2019&ndash;2021'},
+    {lat:42.6628,lng:-83.2132,color:'#3b4cca',label:'Oakland University &middot; Michigan, USA',dates:'2020&ndash;2026 &middot; Ph.D.'},
+    {lat:47.6062,lng:-122.3321,color:'#3b4cca',label:'Rec Room &middot; Seattle, WA',dates:'Summer 2023'},
+    {lat:42.3314,lng:-83.0458,color:'#7c3aed',label:'Health Alliance Plan &middot; Detroit, MI',dates:'Summer 2025'},
+    {lat:33.2998,lng:-96.7842,color:'#dc2626',label:'Celina, TX',dates:'Current'}
+  ];
+  var bounds=[];
+  stops.forEach(function(s){
+    bounds.push([s.lat,s.lng]);
+    L.circleMarker([s.lat,s.lng],{
+      radius:s.color==='#dc2626'?10:8,
+      fillColor:s.color,color:'#fff',weight:2,fillOpacity:.9
+    }).bindPopup('<b>'+s.label+'</b><br><span style="color:#5b6472;font-size:13px">'+s.dates+'</span>').addTo(map);
+  });
+  map.fitBounds(bounds,{padding:[30,30]});
+})();
+function toggleProj(btn){
+  var det=btn.closest('.proj-card').querySelector('.proj-details');
+  var open=det.classList.toggle('open');
+  btn.textContent=open?'- Details':'+ Details';
+}
+</script>
 </body>
 </html>
